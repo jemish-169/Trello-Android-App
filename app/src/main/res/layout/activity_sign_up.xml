@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bubble_background"
+    android:orientation="vertical"
+    tools:context=".activities.SignUpActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/sign_up_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:id="@+id/sign_up_tv_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nunitosans_extrabold"
+            android:gravity="center_vertical"
+            android:text="@string/sign_up_toolbar_text"
+            android:textColor="@color/dark_yellow"
+            android:textSize="@dimen/tool_bar_title_size18" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/main_content_margin_top40"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/signup_intro_horizontal_margin25"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:gravity="center"
+                android:lineSpacingExtra="@dimen/description_line_space_extra5"
+                android:text="@string/sign_up_greeting_text"
+                android:textColor="@color/dark_yellow"
+                android:textSize="@dimen/description_text_size16" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/signup_intro_horizontal_margin25"
+                android:layout_marginTop="@dimen/card_view_margin_top60"
+                android:layout_marginBottom="@dimen/main_content_margin_top40"
+                android:background="@color/ff_white"
+                android:elevation="@dimen/corner_radius10"
+                app:cardCornerRadius="@dimen/corner_radius10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_view_padding">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/sign_up_til_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_input_horizontal_margin8"
+                        app:boxStrokeColor="@color/dark_yellow"
+                        app:hintTextColor="@color/dark_yellow">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/sign_up_et_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunitosans_regular"
+                            android:hint="@string/enter_name"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="@dimen/description_text_size16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/sign_up_til_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_input_horizontal_margin8"
+                        app:boxStrokeColor="@color/dark_yellow"
+                        app:hintTextColor="@color/dark_yellow">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/sign_up_et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunitosans_regular"
+                            android:hint="@string/enter_email"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="@dimen/description_text_size16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/sign_up_til_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_input_horizontal_margin8"
+                        app:boxStrokeColor="@color/dark_yellow"
+                        app:hintTextColor="@color/dark_yellow">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/sign_up_et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunitosans_regular"
+                            android:hint="@string/enter_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="@dimen/description_text_size16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/sign_up_btn_sign_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_input_horizontal_margin8"
+                        android:layout_marginTop="@dimen/btn_sign_up_top15"
+                        android:background="@drawable/horizontal_two_color_gradient"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:paddingVertical="@dimen/padding8"
+                        android:text="@string/sign_up_toolbar_text"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/tool_bar_title_size18"
+                        app:backgroundTint="@null" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
