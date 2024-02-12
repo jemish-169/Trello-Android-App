@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/item_board_content_marginBottom10"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/item_board_content_padding10">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_board_iv"
+            android:layout_width="@dimen/item_board_image_size60"
+            android:layout_height="@dimen/item_board_image_size60"
+            android:contentDescription="@null"
+            android:src="@drawable/employee_manages_project"
+            app:civ_border_color="@color/dark_yellow"
+            app:civ_border_width="@dimen/item_board_image_circular_border_width1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_board_name_layout_marginStart10"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_board_tv_board_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/item_board_name_text_size18"
+                tools:text="Board Name" />
+
+            <TextView
+                android:id="@+id/item_board_tv_created_by"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunitosans_regular"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/item_board_created_by_text_size14"
+                tools:text="Created By" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_board_divider_height1_2"
+        android:layout_marginTop="@dimen/item_board_divider_marginTop5"
+        android:background="@color/divider_color" />
+
+</LinearLayout>

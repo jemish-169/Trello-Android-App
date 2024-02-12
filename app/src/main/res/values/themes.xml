@@ -1,7 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Trello" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/dark_yellow</item>
+        <item name="colorPrimary">@color/light_yellow</item>
         <item name="colorPrimaryDark">@color/light_yellow</item>
         <item name="colorAccent">@color/dark_yellow</item>
         <item name="colorSecondary">@color/light_yellow</item>
@@ -10,4 +10,18 @@
     </style>
 
     <style name="Theme.Trello" parent="Base.Theme.Trello" />
+
+    <style name="Theme.Trello.AppbarOverlay" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+    <style name="Theme.Trello.NavigationDrawerItemStyle">
+        <item name="android:textSize">@dimen/drawer_item_text_size18</item>
+        <item name="android:fontFamily">@font/nunitosans_regular</item>
+    </style>
+
+    <style name="Theme.Trello.AppbarTitle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:textSize">@dimen/tool_bar_title_size21</item>
+    </style>
+
 </resources>

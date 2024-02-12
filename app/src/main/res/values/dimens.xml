@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="tool_bar_title_size18">18sp</dimen>
+    <dimen name="tool_bar_title_size21">21sp</dimen>
     <dimen name="app_name_size40">40sp</dimen>
     <dimen name="splash_tv_app_name_text_size70">70sp</dimen>
     <dimen name="main_content_margin_top40">40dp</dimen>
@@ -22,12 +22,41 @@
 
     <dimen name="signup_intro_horizontal_margin25">25dp</dimen>
     <dimen name="card_view_margin_top60">60dp</dimen>
-    <dimen name="card_view_padding">16dp</dimen>
+    <dimen name="card_view_padding16">16dp</dimen>
     <dimen name="text_input_horizontal_margin8">8dp</dimen>
 
-    <dimen name="progressbar_size50">50dp</dimen>
+    <dimen name="progressbar_size40">40dp</dimen>
     <dimen name="progress_text_margin_start16">16dp</dimen>
     <dimen name="progress_text_size16">16sp</dimen>
     <dimen name="dialog_padding30">30dp</dimen>
     <dimen name="dialog_padding20">20dp</dimen>
+
+    <dimen name="drawer_iv_circle80">80dp</dimen>
+    <dimen name="drawer_main_height200">200dp</dimen>
+    <dimen name="drawer_iv_circle_margin_horizontal16">16dp</dimen>
+    <dimen name="drawer_iv_circle_width2">2dp</dimen>
+    <dimen name="drawer_user_name_margin_top5">5dp</dimen>
+    <dimen name="drawer_user_name_margin_bottom8">8dp</dimen>
+    <dimen name="drawer_user_name_text_size22">22sp</dimen>
+    <dimen name="drawer_divider_height1_2">0.5dp</dimen>
+    <dimen name="drawer_corner_size0">0dp</dimen>
+    <dimen name="drawer_item_text_size18">18sp</dimen>
+    <dimen name="sign_up_in_btn_text_size18">18sp</dimen>
+    <dimen name="my_profile_circle_iv120">120dp</dimen>
+    <dimen name="my_profile_circle_iv_margin_bottom12">12dp</dimen>
+    <dimen name="my_profile_circle_iv_margin_top8">8dp</dimen>
+    <dimen name="fab_margin16">16dp</dimen>
+    <dimen name="main_screen_content_padding16">16dp</dimen>
+    <dimen name="card_view_elevation10">10dp</dimen>
+    <dimen name="no_boards_available_text_size18">18sp</dimen>
+    <dimen name="item_board_content_marginBottom10">10dp</dimen>
+    <dimen name="item_board_divider_height1_2">0.5dp</dimen>
+    <dimen name="item_board_divider_marginTop5">5dp</dimen>
+    <dimen name="item_board_content_padding10">10dp</dimen>
+    <dimen name="item_board_image_size60">60dp</dimen>
+    <dimen name="item_board_image_circular_border_width1">1dp</dimen>
+    <dimen name="item_board_name_layout_marginStart10">10dp</dimen>
+    <dimen name="item_board_name_text_size18">18sp</dimen>
+    <dimen name="item_board_created_by_text_size14">14sp</dimen>
+
 </resources>

@@ -7,4 +7,6 @@
     <color name="dark_yellow">#765B08</color>
     <color name="light_yellow">#F2BB10</color>
     <color name="red">#ba1a1a</color>
+    <color name="divider_color">#AAAAAA</color>
+
 </resources>

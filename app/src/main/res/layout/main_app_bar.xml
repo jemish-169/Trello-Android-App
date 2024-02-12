@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Trello.AppbarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/main_app_bar_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_yellow"
+            app:popupTheme="@style/Theme.Trello.AppbarOverlay"
+            app:titleTextAppearance="@style/Theme.Trello.AppbarTitle" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/main_ui_layout"
+        layout="@layout/main_activity_content" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_create_board"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin16"
+        app:backgroundTint="@color/light_yellow"
+        app:srcCompat="@drawable/ic_add_24" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

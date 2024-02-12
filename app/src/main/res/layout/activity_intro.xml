@@ -58,11 +58,13 @@
             android:layout_marginHorizontal="@dimen/description_margin_horizontal20"
             android:layout_marginTop="@dimen/btn_sign_in_top50"
             android:background="@drawable/horizontal_two_color_gradient"
+            android:fontFamily="@font/nunitosans_bold"
             android:foreground="?attr/selectableItemBackground"
             android:paddingVertical="@dimen/padding8"
             android:text="@string/sign_in_toolbar_text"
+            android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/tool_bar_title_size18"
+            android:textSize="@dimen/sign_up_in_btn_text_size18"
             app:backgroundTint="@null" />
 
         <Button
@@ -73,11 +75,20 @@
             android:layout_marginTop="@dimen/btn_sign_up_top15"
             android:layout_marginBottom="@dimen/main_content_margin_top40"
             android:background="@drawable/thin_border_background"
+            android:fontFamily="@font/nunitosans_bold"
             android:foreground="?attr/selectableItemBackground"
             android:paddingVertical="@dimen/padding8"
             android:text="@string/sign_up_toolbar_text"
+            android:textAllCaps="true"
             android:textColor="@color/dark_yellow"
-            android:textSize="@dimen/tool_bar_title_size18"
+            android:textSize="@dimen/sign_up_in_btn_text_size18"
             app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/skip_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="skip"
+            android:textColor="@color/black" />
     </LinearLayout>
 </ScrollView>
