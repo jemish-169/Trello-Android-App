@@ -83,12 +83,5 @@
             android:textColor="@color/dark_yellow"
             android:textSize="@dimen/sign_up_in_btn_text_size18"
             app:backgroundTint="@null" />
-
-        <Button
-            android:id="@+id/skip_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="skip"
-            android:textColor="@color/black" />
     </LinearLayout>
 </ScrollView>

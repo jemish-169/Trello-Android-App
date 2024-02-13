@@ -27,4 +27,15 @@
     <string name="no_boards_are_available">No boards available!</string>
     <string name="failed_to_load_boards">Failed to load boards.</string>
     <string name="no_task_are_available">No tasks are available!</string>
+    <string name="item_task_add_List">Add List</string>
+    <string name="item_task_list_name">List Name</string>
+    <string name="title">Title</string>
+    <string name="action_add_card">Add card</string>
+    <string name="hint_card_name">Card Name</string>
+    <string name="alert">Alert</string>
+    <string name="are_you_sure_you_want_to_delete">Are you sure you want to delete %1$s?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="main_nav_members">Members</string>
+    <string name="no_members_there">No members there!</string>
 </resources>

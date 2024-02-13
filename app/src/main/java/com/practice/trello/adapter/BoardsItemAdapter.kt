@@ -11,6 +11,7 @@ import com.practice.trello.models.Board
 
 class BoardsItemAdapter(private val context: Context, private val list: ArrayList<Board>) :
     RecyclerView.Adapter<BoardsItemAdapter.ViewHolder>() {
+
     private var onClickListener: OnClickListener? = null
 
     inner class ViewHolder(val binding: ItemBoardsBinding) :

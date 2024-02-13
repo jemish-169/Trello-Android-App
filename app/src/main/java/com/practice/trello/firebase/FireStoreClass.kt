@@ -9,6 +9,7 @@ import com.google.firebase.firestore.SetOptions
 import com.practice.trello.R
 import com.practice.trello.activities.CreateBoardActivity
 import com.practice.trello.activities.MainActivity
+import com.practice.trello.activities.MembersActivity
 import com.practice.trello.activities.MyProfileActivity
 import com.practice.trello.activities.SignInActivity
 import com.practice.trello.activities.SignUpActivity
@@ -26,6 +27,9 @@ class FireStoreClass {
             .set(userInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.signUpSuccess()
+            }
+            .addOnFailureListener {
+                Toast.makeText(activity, "Registration Failure!!!.", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -93,7 +97,6 @@ class FireStoreClass {
             }
     }
 
-
     fun loadUserData(activity: Activity, readBoardList: Boolean = false) {
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserId())
@@ -117,21 +120,53 @@ class FireStoreClass {
             }
     }
 
+    fun addUpdateTaskList(activity: TaskListActivity, board: Board) {
+        val taskListHashMap = HashMap<String, Any>()
+        taskListHashMap[Constants.TASK_LIST] = board.taskList
+
+        mFireStore.collection(Constants.BOARDS)
+            .document(board.documentId)
+            .update(taskListHashMap)
+            .addOnSuccessListener {
+                activity.addUpdateTaskListSuccess()
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Toast.makeText(activity, "Task update Failure!!!.", Toast.LENGTH_SHORT).show()
+            }
+
+    }
+
     fun getBoardDetails(activity: TaskListActivity, documentId: String) {
         mFireStore.collection(Constants.BOARDS)
             .document(documentId)
             .get()
             .addOnSuccessListener { document ->
-                activity.boardDetails(document.toObject(Board::class.java)!!)
+                val board = document.toObject(Board::class.java)!!
+                board.documentId = document.id
+                activity.boardDetails(board)
             }
             .addOnFailureListener {
                 activity.hideProgressDialog()
-                activity.binding.taskListRvBoards.visibility =
-                    View.GONE
-                activity.binding.taskListTvNoBoards.visibility =
-                    View.VISIBLE
-                activity.binding.taskListTvNoBoards.text =
-                    activity.getString(R.string.failed_to_load_boards)
+                Toast.makeText(activity, "getting boards Failure!!!.", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun getAssignedMembersListDetails(activity: MembersActivity, assignedTo: ArrayList<String>) {
+        mFireStore.collection(Constants.USERS)
+            .whereIn(Constants.ID, assignedTo)
+            .get()
+            .addOnSuccessListener { document ->
+                val userList: ArrayList<User> = ArrayList()
+                for (i in document.documents) {
+                    val user = i.toObject((User::class.java))!!
+                    userList.add(user)
+                }
+                activity.setUpMemberList(userList)
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Toast.makeText(activity, "Failed to load members", Toast.LENGTH_SHORT).show()
             }
     }
 }

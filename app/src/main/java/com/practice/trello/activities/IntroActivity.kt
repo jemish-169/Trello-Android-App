@@ -13,19 +13,22 @@ class IntroActivity : AppCompatActivity() {
         binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val currentUserId = FireStoreClass().getCurrentUserId()
+        if (currentUserId.isNotBlank()) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+
         binding.introBtnSignIn.setOnClickListener {
             val intent = Intent(this, SignInActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.introBtnSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
-        }
-        binding.skipButton.setOnClickListener {
-            val currentUserId = FireStoreClass().getCurrentUserId()
-            if (currentUserId.isNotBlank())
-                startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MyProfileActivity">
+    tools:context=".activities.MembersActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -14,14 +14,14 @@
         android:theme="@style/Theme.Trello.AppbarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/task_list_tool_bar"
+            android:id="@+id/members_tool_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/light_yellow"
             app:navigationIcon="@drawable/baseline_arrow_back"
             app:popupTheme="@style/Theme.Trello.AppbarOverlay"
-            app:titleTextAppearance="@style/Theme.Trello.AppbarTitle"
-            tools:title="@string/task_list_nav" />
+            app:title="@string/main_nav_members"
+            app:titleTextAppearance="@style/Theme.Trello.AppbarTitle" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
@@ -31,6 +31,7 @@
         android:background="@drawable/bubble_background"
         android:scrollbars="none">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,14 +39,26 @@
             android:orientation="vertical"
             android:padding="@dimen/main_screen_content_padding16"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context=".activities.TaskListActivity">
+            tools:context=".activities.MainActivity">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_task_list"
+                android:id="@+id/member_rv_members_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_member" />
+
+            <TextView
+                android:id="@+id/members_tv_no_members"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:gravity="center"
+                android:text="@string/no_members_there"
+                android:textColor="@color/dark_yellow"
+                android:textSize="@dimen/no_boards_available_text_size18"
+                android:visibility="visible" />
 
         </LinearLayout>
     </ScrollView>

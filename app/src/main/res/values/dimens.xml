@@ -49,7 +49,7 @@
     <dimen name="main_screen_content_padding16">16dp</dimen>
     <dimen name="card_view_elevation10">10dp</dimen>
     <dimen name="no_boards_available_text_size18">18sp</dimen>
-    <dimen name="item_board_content_marginBottom10">10dp</dimen>
+    <dimen name="item_board_content_marginBottom5">5dp</dimen>
     <dimen name="item_board_divider_height1_2">0.5dp</dimen>
     <dimen name="item_board_divider_marginTop5">5dp</dimen>
     <dimen name="item_board_content_padding10">10dp</dimen>
@@ -58,5 +58,26 @@
     <dimen name="item_board_name_layout_marginStart10">10dp</dimen>
     <dimen name="item_board_name_text_size18">18sp</dimen>
     <dimen name="item_board_created_by_text_size14">14sp</dimen>
+    <dimen name="item_task_cv_elevation5">5dp</dimen>
+    <dimen name="item_task_tv_add_list_padding12">12dp</dimen>
+    <dimen name="item_task_cv_margin5">5dp</dimen>
+    <dimen name="item_task_tv_corner_radius5">5dp</dimen>
+    <dimen name="item_task_ib_item_close10">10dp</dimen>
+    <dimen name="task_item_title_text_padding10">10dp</dimen>
+    <dimen name="task_item_title_text_size16">16sp</dimen>
+    <dimen name="task_item_add_item_text_padding12">12dp</dimen>
+    <dimen name="task_item_add_item_text_size18">18sp</dimen>
+    <dimen name="task_item_rv_card_list_margin5">5dp</dimen>
+    <dimen name="custom_dialog_text_margin10">10dp</dimen>
+    <dimen name="custom_dialog_text_size22">22sp</dimen>
+    <dimen name="card_item_margin8">8dp</dimen>
+    <dimen name="item_card_cv_elevation5">5dp</dimen>
+    <dimen name="item_card_view_height15">15dp</dimen>
+    <dimen name="card_item_tv_padding10">10dp</dimen>
+    <dimen name="card_item_rv_margin2">2dp</dimen>
+    <dimen name="members_cv_marginTop5">5dp</dimen>
+    <dimen name="member_item_margin_end5">5dp</dimen>
+    <dimen name="member_item_email14">14sp</dimen>
+    <dimen name="member_item_iv_size30">30dp</dimen>
 
 </resources>
