@@ -45,20 +45,8 @@
                 android:id="@+id/member_rv_members_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_member" />
-
-            <TextView
-                android:id="@+id/members_tv_no_members"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/nunitosans_semibold"
-                android:gravity="center"
-                android:text="@string/no_members_there"
-                android:textColor="@color/dark_yellow"
-                android:textSize="@dimen/no_boards_available_text_size18"
-                android:visibility="visible" />
 
         </LinearLayout>
     </ScrollView>

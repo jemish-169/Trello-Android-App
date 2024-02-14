@@ -50,7 +50,7 @@
     <dimen name="card_view_elevation10">10dp</dimen>
     <dimen name="no_boards_available_text_size18">18sp</dimen>
     <dimen name="item_board_content_marginBottom5">5dp</dimen>
-    <dimen name="item_board_divider_height1_2">0.5dp</dimen>
+    <dimen name="item_board_divider_height1">1dp</dimen>
     <dimen name="item_board_divider_marginTop5">5dp</dimen>
     <dimen name="item_board_content_padding10">10dp</dimen>
     <dimen name="item_board_image_size60">60dp</dimen>
@@ -79,5 +79,11 @@
     <dimen name="member_item_margin_end5">5dp</dimen>
     <dimen name="member_item_email14">14sp</dimen>
     <dimen name="member_item_iv_size30">30dp</dimen>
+    <dimen name="dialog_search_member_padding10">10dp</dimen>
+    <dimen name="dialog_search_text_margin10">10dp</dimen>
+    <dimen name="member_dialog_view_height1">1dp</dimen>
+    <dimen name="member_dialog_view_margin_vertical3">3dp</dimen>
+    <dimen name="member_dialog_btn_margin_top10">10dp</dimen>
+    <dimen name="member_dialog_padding10">10dp</dimen>
 
 </resources>

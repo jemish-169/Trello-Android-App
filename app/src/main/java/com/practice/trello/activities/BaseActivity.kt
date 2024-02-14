@@ -25,6 +25,7 @@ open class BaseActivity : AppCompatActivity() {
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
         mProgressDialog.setContentView(R.layout.dialog_progress)
+        mProgressDialog.setCancelable(false)
         val tvProgressText = mProgressDialog.findViewById<TextView>(R.id.tv_progress_text)
         tvProgressText.text = text
         mProgressDialog.show()

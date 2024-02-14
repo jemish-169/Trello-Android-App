@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_dialog_rounded"
+        app:cardCornerRadius="@dimen/item_task_tv_corner_radius5"
+        app:cardElevation="@dimen/item_card_cv_elevation5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/member_dialog_padding10">
+
+            <TextView
+                android:id="@+id/dialog_search_tv_main_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/member_dialog_view_margin_vertical3"
+                android:fontFamily="@font/nunitosans_bold"
+                android:padding="@dimen/member_item_margin_end5"
+                android:text="@string/search_member"
+                android:textColor="@color/black"
+                android:textSize="@dimen/drawer_item_text_size18" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/member_dialog_view_height1"
+                android:layout_marginVertical="@dimen/member_dialog_view_margin_vertical3"
+                android:background="@color/divider_color" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/member_dialog_til_member_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/member_dialog_btn_margin_top10"
+                app:boxStrokeColor="@color/dark_yellow"
+                app:hintTextColor="@color/dark_yellow">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/member_dialog_et_member_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunitosans_regular"
+                    android:hint="@string/enter_email"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/dark_yellow"
+                    android:textSize="@dimen/description_text_size16" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/member_dialog_btn_margin_top10"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/dialog_search_btn_cancel"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/description_text_size16" />
+
+                <Button
+                    android:id="@+id/dialog_search_btn_add"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/custom_dialog_text_margin10"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nunitosans_bold"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/add"
+                    android:textColor="@color/dark_yellow"
+                    android:textSize="@dimen/description_text_size16" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

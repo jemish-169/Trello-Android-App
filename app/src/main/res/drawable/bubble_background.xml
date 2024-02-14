@@ -12,9 +12,9 @@
             <shape>
                 <gradient
                     android:centerColor="@color/white"
-                    android:centerX="0.13"
+                    android:centerX="0.0"
                     android:centerY="0.6"
-                    android:gradientRadius="80%"
+                    android:gradientRadius="120%"
                     android:startColor="@color/light_yellow"
                     android:type="radial" />
             </shape>
@@ -28,9 +28,9 @@
             <shape>
                 <gradient
                     android:centerColor="@color/white"
-                    android:centerX="0.98"
-                    android:centerY="0.05"
-                    android:gradientRadius="60%"
+                    android:centerX="1.0"
+                    android:centerY="0.0"
+                    android:gradientRadius="80%"
                     android:startColor="@color/light_yellow"
                     android:type="radial" />
             </shape>

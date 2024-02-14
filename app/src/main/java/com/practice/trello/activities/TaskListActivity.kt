@@ -1,5 +1,6 @@
 package com.practice.trello.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -16,7 +17,12 @@ import com.practice.trello.utils.Constants
 class TaskListActivity : BaseActivity() {
     lateinit var binding: ActivityTaskListBinding
     private lateinit var mBoardDetails: Board
-    private var mDocumentId: String? = null
+    private lateinit var mDocumentId: String
+
+    companion object {
+        const val MEMBER_REQUEST_CODE: Int = 13
+        const val CARD_DETAILS_REQUEST_CODE: Int = 14
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +30,11 @@ class TaskListActivity : BaseActivity() {
         setContentView(binding.root)
 
         if (intent.hasExtra(Constants.DOCUMENT_ID)) {
-            mDocumentId = intent.getStringExtra(Constants.DOCUMENT_ID)
+            mDocumentId = intent.getStringExtra(Constants.DOCUMENT_ID)!!
         }
-        if (!mDocumentId.isNullOrEmpty()) {
+        if (mDocumentId.isNotEmpty()) {
             showProgressDialog(resources.getString(R.string.progress_please_wait))
-            FireStoreClass().getBoardDetails(this, mDocumentId!!)
+            FireStoreClass().getBoardDetails(this, mDocumentId)
         }
     }
 
@@ -42,10 +48,18 @@ class TaskListActivity : BaseActivity() {
             R.id.action_members -> {
                 val intent = Intent(this, MembersActivity::class.java)
                 intent.putExtra(Constants.BOARS_DETAIL, mBoardDetails)
-                startActivity(intent)
+                startActivityForResult(intent, MEMBER_REQUEST_CODE)
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == MEMBER_REQUEST_CODE) {
+            showProgressDialog(resources.getString(R.string.progress_please_wait))
+            FireStoreClass().getBoardDetails(this, mDocumentId)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     fun boardDetails(board: Board) {

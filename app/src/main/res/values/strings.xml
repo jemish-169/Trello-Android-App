@@ -38,4 +38,8 @@
     <string name="no">No</string>
     <string name="main_nav_members">Members</string>
     <string name="no_members_there">No members there!</string>
+    <string name="member_add">Add member</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+    <string name="search_member">Search member</string>
 </resources>
