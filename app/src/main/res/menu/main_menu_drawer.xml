@@ -5,10 +5,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/main_nav_my_profile"
+            android:checkable="false"
             android:icon="@drawable/ic_my_profile"
             android:title="@string/main_nav_my_profile" />
         <item
             android:id="@+id/main_nav_sign_out"
+            android:checkable="false"
             android:icon="@drawable/ic_sign_out_24"
             android:title="@string/main_nav_sign_out" />
     </group>

@@ -1,8 +1,10 @@
 package com.practice.trello.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
@@ -13,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.practice.trello.R
 import com.practice.trello.adapter.BoardsItemAdapter
 import com.practice.trello.databinding.ActivityMainBinding
+import com.practice.trello.databinding.CustomDialogBoxBinding
 import com.practice.trello.firebase.FireStoreClass
 import com.practice.trello.models.Board
 import com.practice.trello.models.User
@@ -59,11 +62,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
 
             R.id.main_nav_sign_out -> {
-                FirebaseAuth.getInstance().signOut()
-                val intent = Intent(this, IntroActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-                finish()
+                alertDialogForSignOut()
             }
         }
         binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
@@ -107,7 +106,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val adapter = BoardsItemAdapter(this, boardList)
             mainContentRvBoards.adapter = adapter
 
-            adapter.setOnClickListener(object : BoardsItemAdapter.OnClickListener {
+            adapter.setOnClickListener(object : BoardsItemAdapter.OnItemClickListener {
                 override fun onClick(position: Int, model: Board) {
                     val intent = Intent(this@MainActivity, TaskListActivity::class.java)
                     intent.putExtra(Constants.DOCUMENT_ID, model.documentId)
@@ -148,6 +147,29 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
         } else
             doubleBackToExit()
+    }
+
+    private fun alertDialogForSignOut() {
+        val dialog = AlertDialog.Builder(this)
+        val binding = CustomDialogBoxBinding.inflate(LayoutInflater.from(this))
+        dialog.setView(binding.root)
+        binding.customDialogTvMainText.text =
+            resources.getString(R.string.are_you_sure_you_want_to_sign_out)
+
+        val alertDialog: AlertDialog = dialog.create()
+        alertDialog.show()
+        binding.customDialogBtnYes.setOnClickListener {
+            alertDialog.dismiss()
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, IntroActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+            finish()
+
+        }
+        binding.customDialogBtnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 
 }

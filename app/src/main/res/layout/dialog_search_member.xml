@@ -72,7 +72,7 @@
                     android:foreground="?attr/selectableItemBackground"
                     android:text="@string/cancel"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/description_text_size16" />
+                    android:textSize="@dimen/custom_dialog_text_size18" />
 
                 <Button
                     android:id="@+id/dialog_search_btn_add"
@@ -84,8 +84,8 @@
                     android:fontFamily="@font/nunitosans_bold"
                     android:foreground="?attr/selectableItemBackground"
                     android:text="@string/add"
-                    android:textColor="@color/dark_yellow"
-                    android:textSize="@dimen/description_text_size16" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/custom_dialog_text_size18" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -55,7 +55,7 @@ class TaskListActivity : BaseActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == MEMBER_REQUEST_CODE) {
+        if (resultCode == Activity.RESULT_OK && (requestCode == MEMBER_REQUEST_CODE || requestCode == CARD_DETAILS_REQUEST_CODE)) {
             showProgressDialog(resources.getString(R.string.progress_please_wait))
             FireStoreClass().getBoardDetails(this, mDocumentId)
         }
@@ -84,15 +84,13 @@ class TaskListActivity : BaseActivity() {
     }
 
     fun addUpdateTaskListSuccess() {
-//        hideProgressDialog()
-//        showProgressDialog(resources.getString(R.string.progress_please_wait))
         FireStoreClass().getBoardDetails(this, mBoardDetails.documentId)
     }
 
     fun createTaskList(taskListName: String) {
         val task = Task(taskListName, FireStoreClass().getCurrentUserId())
-        mBoardDetails.taskList.add(0, task)
         mBoardDetails.taskList.removeAt(mBoardDetails.taskList.size - 1)
+        mBoardDetails.taskList.add(task)
         showProgressDialog(resources.getString(R.string.progress_please_wait))
         FireStoreClass().addUpdateTaskList(this, mBoardDetails)
     }
@@ -138,7 +136,11 @@ class TaskListActivity : BaseActivity() {
         FireStoreClass().addUpdateTaskList(this, mBoardDetails)
     }
 
-    fun cardDetails(position: Int) {
-
+    fun cardDetails(taskListPosition: Int, cardListPosition: Int) {
+        val intent = Intent(this, CardDetailsActivity::class.java)
+        intent.putExtra(Constants.BOARS_DETAIL, mBoardDetails)
+        intent.putExtra(Constants.TASK_LIST_ITEM_POSITION, taskListPosition)
+        intent.putExtra(Constants.CARD_LIST_ITEM_POSITION, cardListPosition)
+        startActivityForResult(intent, CARD_DETAILS_REQUEST_CODE)
     }
 }

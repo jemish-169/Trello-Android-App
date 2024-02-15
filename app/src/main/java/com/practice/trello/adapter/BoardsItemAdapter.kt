@@ -12,7 +12,7 @@ import com.practice.trello.models.Board
 class BoardsItemAdapter(private val context: Context, private val list: ArrayList<Board>) :
     RecyclerView.Adapter<BoardsItemAdapter.ViewHolder>() {
 
-    private var onClickListener: OnClickListener? = null
+    private var onItemClickListener: OnItemClickListener? = null
 
     inner class ViewHolder(val binding: ItemBoardsBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -41,17 +41,17 @@ class BoardsItemAdapter(private val context: Context, private val list: ArrayLis
                 binding.itemBoardTvBoardName.text = this.name
                 binding.itemBoardTvCreatedBy.text = "Created by ${this.createdBy}"
                 holder.itemView.setOnClickListener {
-                    onClickListener?.onClick(position, list[position])
+                    onItemClickListener?.onClick(position, list[position])
                 }
             }
         }
     }
 
-    fun setOnClickListener(onClickListener: OnClickListener) {
-        this.onClickListener = onClickListener
+    fun setOnClickListener(onItemClickListener: OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
     }
 
-    interface OnClickListener {
+    interface OnItemClickListener {
         fun onClick(position: Int, model: Board)
     }
 }

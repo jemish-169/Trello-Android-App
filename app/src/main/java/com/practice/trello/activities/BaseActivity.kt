@@ -6,6 +6,7 @@ import android.os.Handler
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -26,6 +27,7 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog = Dialog(this)
         mProgressDialog.setContentView(R.layout.dialog_progress)
         mProgressDialog.setCancelable(false)
+        mProgressDialog.setCanceledOnTouchOutside(false)
         val tvProgressText = mProgressDialog.findViewById<TextView>(R.id.tv_progress_text)
         tvProgressText.text = text
         mProgressDialog.show()
@@ -52,7 +54,7 @@ open class BaseActivity : AppCompatActivity() {
 
     fun showErrorSnackBar(message: String) {
         Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG)
-            .setBackgroundTint(resources.getColor(R.color.red)).show()
+            .setBackgroundTint(ContextCompat.getColor(this, R.color.red)).show()
     }
 
     fun TextInputLayout.setErrorMessage(message: String) {

@@ -5,23 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/card_item_margin8"
-    android:background="?attr/selectableItemBackground"
     android:elevation="@dimen/item_card_cv_elevation5"
-    android:orientation="vertical">
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dialog_color_list_cv_corner_radius5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <View
             android:id="@+id/card_item_view_label_color"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_card_view_height15"
-            android:background="@color/light_yellow"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:layout_height="@dimen/item_card_view_height10" />
 
         <TextView
             android:id="@+id/card_item_tv_card_name"
@@ -42,7 +39,6 @@
             android:layout_gravity="end"
             android:layout_margin="@dimen/card_item_rv_margin2"
             android:visibility="gone"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:visibility="visible" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

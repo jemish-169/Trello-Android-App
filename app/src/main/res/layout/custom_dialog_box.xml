@@ -14,7 +14,7 @@
         android:layout_margin="@dimen/custom_dialog_text_margin10"
         android:fontFamily="@font/nunitosans_semibold"
         android:textColor="@color/black"
-        android:textSize="@dimen/drawer_item_text_size18"
+        android:textSize="@dimen/custom_dialog_text_size18"
         tools:text="Do you really want to delete?" />
 
 
@@ -33,7 +33,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/no"
             android:textColor="@color/dark_yellow"
-            android:textSize="@dimen/description_text_size16" />
+            android:textSize="@dimen/custom_dialog_text_size18" />
 
         <Button
             android:id="@+id/custom_dialog_btn_yes"
@@ -45,6 +45,6 @@
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/yes"
             android:textColor="@color/dark_yellow"
-            android:textSize="@dimen/description_text_size16" />
+            android:textSize="@dimen/custom_dialog_text_size18" />
     </LinearLayout>
 </LinearLayout>

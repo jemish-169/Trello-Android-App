@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 import com.practice.trello.R
+import com.practice.trello.activities.CardDetailsActivity
 import com.practice.trello.activities.CreateBoardActivity
 import com.practice.trello.activities.MainActivity
 import com.practice.trello.activities.MembersActivity
@@ -119,7 +120,7 @@ class FireStoreClass {
             }
     }
 
-    fun addUpdateTaskList(activity: TaskListActivity, board: Board) {
+    fun addUpdateTaskList(activity: Activity, board: Board) {
         val taskListHashMap = HashMap<String, Any>()
         taskListHashMap[Constants.TASK_LIST] = board.taskList
 
@@ -127,10 +128,16 @@ class FireStoreClass {
             .document(board.documentId)
             .update(taskListHashMap)
             .addOnSuccessListener {
-                activity.addUpdateTaskListSuccess()
+                if (activity is TaskListActivity)
+                    activity.addUpdateTaskListSuccess()
+                else if (activity is CardDetailsActivity)
+                    activity.addUpdateTaskListSuccess()
             }
             .addOnFailureListener {
-                activity.hideProgressDialog()
+                if (activity is TaskListActivity)
+                    activity.hideProgressDialog()
+                else if (activity is CardDetailsActivity)
+                    activity.hideProgressDialog()
                 Toast.makeText(activity, "Task update Failure!!!.", Toast.LENGTH_SHORT).show()
             }
 

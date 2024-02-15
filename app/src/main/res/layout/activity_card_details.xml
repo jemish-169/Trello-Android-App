@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.CardDetailsActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.Trello.AppbarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/card_details_tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_yellow"
+            app:navigationIcon="@drawable/baseline_arrow_back"
+            app:popupTheme="@style/Theme.Trello.AppbarOverlay"
+            app:title="@string/create_board_toolbar"
+            app:titleTextAppearance="@style/Theme.Trello.AppbarTitle" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/bubble_background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/card_view_padding16">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/card_details_card_margin_bottom10"
+                android:elevation="@dimen/card_view_elevation10"
+                app:cardCornerRadius="@dimen/corner_radius10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_details_lll_padding16">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/card_detail_til_card_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:boxStrokeColor="@color/dark_yellow"
+                        app:hintTextColor="@color/dark_yellow">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/card_detail_et_card_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunitosans_regular"
+                            android:hint="@string/hint_card_name"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/description_text_size16" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:elevation="@dimen/card_view_elevation10"
+                app:cardCornerRadius="@dimen/corner_radius10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/card_details_lll_padding16">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunitosans_regular"
+                        android:text="@string/label_color"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/card_detail_label_text_size14" />
+
+                    <TextView
+                        android:id="@+id/card_detail_tv_select_color"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:padding="@dimen/card_detail_select_color_padding10"
+                        android:text="@string/select_label_color"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_member_margin_top15"
+                        android:fontFamily="@font/nunitosans_regular"
+                        android:text="@string/main_nav_members"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/card_detail_label_text_size14" />
+
+                    <TextView
+                        android:id="@+id/card_detail_tv_select_member"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:padding="@dimen/card_detail_select_color_padding10"
+                        android:text="@string/select_member"
+                        android:textColor="@color/black" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/card_detail_rv_selected_member"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_rv_margin_top5"
+                        android:visibility="gone"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_member_margin_top15"
+                        android:fontFamily="@font/nunitosans_regular"
+                        android:text="@string/due_date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/card_detail_label_text_size14" />
+
+                    <TextView
+                        android:id="@+id/card_detail_tv_select_due_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
+                        android:fontFamily="@font/nunitosans_semibold"
+                        android:padding="@dimen/card_detail_select_color_padding10"
+                        android:text="@string/select_due_date"
+                        android:textColor="@color/black" />
+
+                    <Button
+                        android:id="@+id/card_detail_btn_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_input_horizontal_margin8"
+                        android:layout_marginTop="@dimen/card_detail_btn_margin_top30"
+                        android:background="@drawable/horizontal_two_color_gradient"
+                        android:fontFamily="@font/nunitosans_bold"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:paddingVertical="@dimen/padding8"
+                        android:text="@string/update_btn"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/sign_up_in_btn_text_size18"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

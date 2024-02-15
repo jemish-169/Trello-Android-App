@@ -64,15 +64,15 @@
     <dimen name="item_task_tv_corner_radius5">5dp</dimen>
     <dimen name="item_task_ib_item_close10">10dp</dimen>
     <dimen name="task_item_title_text_padding10">10dp</dimen>
-    <dimen name="task_item_title_text_size16">16sp</dimen>
+    <dimen name="task_item_title_text_size17">17sp</dimen>
     <dimen name="task_item_add_item_text_padding12">12dp</dimen>
     <dimen name="task_item_add_item_text_size18">18sp</dimen>
     <dimen name="task_item_rv_card_list_margin5">5dp</dimen>
     <dimen name="custom_dialog_text_margin10">10dp</dimen>
-    <dimen name="custom_dialog_text_size22">22sp</dimen>
+    <dimen name="custom_dialog_text_size18">18sp</dimen>
     <dimen name="card_item_margin8">8dp</dimen>
     <dimen name="item_card_cv_elevation5">5dp</dimen>
-    <dimen name="item_card_view_height15">15dp</dimen>
+    <dimen name="item_card_view_height10">10dp</dimen>
     <dimen name="card_item_tv_padding10">10dp</dimen>
     <dimen name="card_item_rv_margin2">2dp</dimen>
     <dimen name="members_cv_marginTop5">5dp</dimen>
@@ -85,5 +85,21 @@
     <dimen name="member_dialog_view_margin_vertical3">3dp</dimen>
     <dimen name="member_dialog_btn_margin_top10">10dp</dimen>
     <dimen name="member_dialog_padding10">10dp</dimen>
+    <dimen name="card_details_card_margin_bottom10">10dp</dimen>
+    <dimen name="card_details_lll_padding16">16dp</dimen>
+    <dimen name="card_detail_label_text_size14">14sp</dimen>
+    <dimen name="card_detail_select_color_padding10">10dp</dimen>
+    <dimen name="card_detail_selext_color_margin_top5">5dp</dimen>
+    <dimen name="card_detail_member_margin_top15">15dp</dimen>
+    <dimen name="card_detail_rv_margin_top5">5dp</dimen>
+    <dimen name="card_detail_btn_margin_top30">30dp</dimen>
+    <dimen name="item_label_color_view_height40">40dp</dimen>
+    <dimen name="item_label_color_view_margin5">5dp</dimen>
+    <dimen name="item_label_color_iv_margin_end10">10dp</dimen>
+    <dimen name="dialog_color_list_cv_corner_radius5">5dp</dimen>
+    <dimen name="dialog_color_list_ll_padding10">10dp</dimen>
+    <dimen name="dialog_color_list_tv_padding5">5dp</dimen>
+    <dimen name="dialog_color_list_tv_text_size18">18sp</dimen>
+    <dimen name="dialog_color_view_margin_vertical3">3dp</dimen>
 
 </resources>

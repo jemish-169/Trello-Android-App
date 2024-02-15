@@ -78,6 +78,9 @@ class MembersActivity : BaseActivity() {
         setSupportActionBar(binding.membersToolBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.membersToolBar.setNavigationOnClickListener {
+            if (anyChangesMade) {
+                setResult(Activity.RESULT_OK)
+            }
             onBackPressed()
         }
     }

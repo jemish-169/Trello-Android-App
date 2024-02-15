@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_label_color_frame_lauout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/item_label_color_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_label_color_view_height40"
+        android:layout_margin="@dimen/item_label_color_view_margin5"
+        android:background="@color/light_yellow"
+        android:foreground="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/item_label_tv_no_color"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_label_color_view_height40"
+        android:layout_margin="@dimen/item_label_color_view_margin5"
+        android:fontFamily="@font/nunitosans_semibold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="@string/no_color"
+        android:textColor="@color/black"
+        android:textSize="@dimen/description_text_size16"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/item_label_color_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginEnd="@dimen/item_label_color_iv_margin_end10"
+        android:contentDescription="@null"
+        android:foreground="?attr/selectableItemBackground"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_right_24"
+        app:tint="#FF101010"
+        tools:visibility="visible" />
+
+
+</FrameLayout>

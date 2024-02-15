@@ -9,4 +9,5 @@
     <color name="red">#FF8D7F</color>
     <color name="divider_color">#555555</color>
     <color name="transparent">#50101010</color>
+    <color name="grey">#AAAAAA</color>
 </resources>

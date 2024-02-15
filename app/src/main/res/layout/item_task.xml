@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/light_yellow"
-            android:fontFamily="@font/nunitosans_bold"
+            android:fontFamily="@font/nunitosans_semibold"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:padding="@dimen/item_task_tv_add_list_padding12"
@@ -118,7 +118,7 @@
                     android:maxLines="1"
                     android:padding="@dimen/task_item_title_text_padding10"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/task_item_title_text_size16"
+                    android:textSize="@dimen/task_item_title_text_size17"
                     tools:text="@string/title" />
 
                 <ImageButton
@@ -280,7 +280,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/light_yellow"
                 android:elevation="@dimen/card_view_elevation10"
-                android:fontFamily="@font/nunitosans_bold"
+                android:fontFamily="@font/nunitosans_semibold"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:padding="@dimen/task_item_add_item_text_padding12"

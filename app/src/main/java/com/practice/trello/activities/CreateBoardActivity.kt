@@ -28,7 +28,6 @@ class CreateBoardActivity : BaseActivity() {
 
     companion object {
         private const val READ_STORAGE_PERMISSION_CODE = 1
-        const val PICK_IMAGE_REQUEST_CODE = 2
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

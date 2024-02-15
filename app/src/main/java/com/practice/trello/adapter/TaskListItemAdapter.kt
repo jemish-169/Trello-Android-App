@@ -140,10 +140,10 @@ open class TaskListItemAdapter(private val context: Context, private var list: A
                 val adapter = CardListItemsAdapter(context, model.cards)
                 binding.itemTaskRvCardList.adapter = adapter
 
-                adapter.setOnClickListener(object : CardListItemsAdapter.OnClickListener {
-                    override fun onClick(position: Int) {
+                adapter.setOnClickListener(object : CardListItemsAdapter.OnItemClickListener {
+                    override fun onClick(cardPosition: Int) {
                         if (context is TaskListActivity)
-                            context.cardDetails(position)
+                            context.cardDetails(adapterPosition, cardPosition)
                     }
                 })
             }
