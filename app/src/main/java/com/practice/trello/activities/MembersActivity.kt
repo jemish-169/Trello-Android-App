@@ -1,10 +1,12 @@
 package com.practice.trello.activities
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Patterns
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.window.OnBackInvokedDispatcher
@@ -12,6 +14,7 @@ import androidx.core.widget.doOnTextChanged
 import com.practice.trello.R
 import com.practice.trello.adapter.MemberListItemAdapter
 import com.practice.trello.databinding.ActivityMembersBinding
+import com.practice.trello.databinding.CustomDialogBoxBinding
 import com.practice.trello.databinding.DialogSearchMemberBinding
 import com.practice.trello.firebase.FireStoreClass
 import com.practice.trello.models.Board
@@ -77,17 +80,16 @@ class MembersActivity : BaseActivity() {
         mAssignedMemberList = list
         hideProgressDialog()
         binding.memberRvMembersList.setHasFixedSize(true)
-        adapter = MemberListItemAdapter(this, list, mBoardDetails.createdById, getCurrentUserId())
+        adapter = MemberListItemAdapter(
+            this,
+            list,
+            mBoardDetails.createdById,
+            FireStoreClass().getCurrentUserId()
+        )
         binding.memberRvMembersList.adapter = adapter
         adapter.setOnClickListener(object : MemberListItemAdapter.OnItemClickListener {
             override fun onClick(position: Int, user: User) {
-                showProgressDialog(resources.getString(R.string.progress_please_wait))
-                FireStoreClass().removeMemberFromBoard(
-                    this@MembersActivity,
-                    mBoardDetails,
-                    position,
-                    user
-                )
+                alertDialogForRemoveMember(user, position)
             }
         })
     }
@@ -109,7 +111,7 @@ class MembersActivity : BaseActivity() {
     }
 
     private fun alertDialogToAddMember() {
-        if (getCurrentUserId() == mBoardDetails.createdById) {
+        if (FireStoreClass().getCurrentUserId() == mBoardDetails.createdById) {
             val dialog = Dialog(this)
             dialogBinding = DialogSearchMemberBinding.inflate(layoutInflater)
             dialog.setContentView(dialogBinding!!.root)
@@ -174,6 +176,30 @@ class MembersActivity : BaseActivity() {
         anyChangesMade = true
         adapter.notifyItemRemoved(position)
         SendNotificationToUserRemoveAsyncTask(mBoardDetails.name, user.fcmToken).execute()
+    }
+
+    private fun alertDialogForRemoveMember(user: User, position: Int) {
+        val dialog = AlertDialog.Builder(this)
+        val binding = CustomDialogBoxBinding.inflate(LayoutInflater.from(this))
+        dialog.setView(binding.root)
+        binding.customDialogTvMainText.text =
+            resources.getString(R.string.are_you_sure_you_want_to_remove_member, user.name)
+
+        val alertDialog: AlertDialog = dialog.create()
+        alertDialog.show()
+        binding.customDialogBtnYes.setOnClickListener {
+            alertDialog.dismiss()
+            showProgressDialog(resources.getString(R.string.progress_please_wait))
+            FireStoreClass().removeMemberFromBoard(
+                this@MembersActivity,
+                mBoardDetails,
+                position,
+                user
+            )
+        }
+        binding.customDialogBtnNo.setOnClickListener {
+            alertDialog.dismiss()
+        }
     }
 
     private inner class SendNotificationToUserAsyncTask(val boardName: String, val token: String) :

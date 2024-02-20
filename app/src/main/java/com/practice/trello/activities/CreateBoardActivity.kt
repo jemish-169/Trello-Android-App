@@ -132,7 +132,7 @@ class CreateBoardActivity : BaseActivity() {
     }
 
     private fun createBoard() {
-        val currentUserId = getCurrentUserId()
+        val currentUserId = FireStoreClass().getCurrentUserId()
         val assignedUserList: ArrayList<String> = ArrayList()
         assignedUserList.add(currentUserId)
         val board = Board(

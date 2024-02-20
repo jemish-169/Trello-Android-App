@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed({
 
             val currentUserId = FireStoreClass().getCurrentUserId()
-            if (currentUserId.isNotBlank())
+            if (currentUserId.isNotBlank() || currentUserId.isNotEmpty())
                 startActivity(Intent(this, MainActivity::class.java))
             else
                 startActivity(Intent(this, IntroActivity::class.java))

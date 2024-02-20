@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
 import com.practice.trello.R
 import com.practice.trello.databinding.ActivityBaseBinding
 
@@ -36,11 +35,6 @@ open class BaseActivity : AppCompatActivity() {
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
     }
-
-    fun getCurrentUserId(): String {
-        return FirebaseAuth.getInstance().currentUser!!.uid
-    }
-
     fun doubleBackToExit() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressedDispatcher.onBackPressed()
