@@ -9,7 +9,6 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.window.OnBackInvokedDispatcher
 import androidx.core.widget.doOnTextChanged
 import com.practice.trello.R
 import com.practice.trello.adapter.MemberListItemAdapter
@@ -35,7 +34,6 @@ class MembersActivity : BaseActivity() {
     private lateinit var mBoardDetails: Board
     private var dialogBinding: DialogSearchMemberBinding? = null
     private lateinit var mAssignedMemberList: ArrayList<User>
-    private var anyChangesMade = false
     private lateinit var adapter: MemberListItemAdapter
 
 
@@ -69,13 +67,6 @@ class MembersActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun getOnBackInvokedDispatcher(): OnBackInvokedDispatcher {
-        if (anyChangesMade) {
-            setResult(Activity.RESULT_OK)
-        }
-        return super.getOnBackInvokedDispatcher()
-    }
-
     fun setUpMemberList(list: ArrayList<User>) {
         mAssignedMemberList = list
         hideProgressDialog()
@@ -103,9 +94,6 @@ class MembersActivity : BaseActivity() {
         setSupportActionBar(binding.membersToolBar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.membersToolBar.setNavigationOnClickListener {
-            if (anyChangesMade) {
-                setResult(Activity.RESULT_OK)
-            }
             onBackPressedDispatcher.onBackPressed()
         }
     }
@@ -163,7 +151,7 @@ class MembersActivity : BaseActivity() {
     fun memberAssignedSuccess(user: User) {
         hideProgressDialog()
         mAssignedMemberList.add(user)
-        anyChangesMade = true
+        setResult(Activity.RESULT_OK)
         binding.memberRvMembersList.setHasFixedSize(false)
         adapter.notifyItemInserted(mAssignedMemberList.size - 1)
         SendNotificationToUserAsyncTask(mBoardDetails.name, user.fcmToken).execute()
@@ -173,7 +161,7 @@ class MembersActivity : BaseActivity() {
         hideProgressDialog()
         mBoardDetails.assignedTo.remove(user.id)
         mAssignedMemberList.remove(user)
-        anyChangesMade = true
+        setResult(Activity.RESULT_OK)
         adapter.notifyItemRemoved(position)
         SendNotificationToUserRemoveAsyncTask(mBoardDetails.name, user.fcmToken).execute()
     }
