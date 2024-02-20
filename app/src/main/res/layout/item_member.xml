@@ -16,7 +16,7 @@
         android:padding="@dimen/item_board_content_padding10">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/item_board_iv"
+            android:id="@+id/item_member_iv"
             android:layout_width="@dimen/item_board_image_size60"
             android:layout_height="@dimen/item_board_image_size60"
             android:contentDescription="@null"
@@ -32,22 +32,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item_board_tv_board_name"
+                android:id="@+id/item_board_tv_member_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:fontFamily="@font/nunitosans_regular"
+                android:fontFamily="@font/nunito_sans_regular"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="@dimen/item_board_name_text_size18"
                 tools:text="Member name" />
 
             <TextView
-                android:id="@+id/item_board_tv_created_by"
+                android:id="@+id/item_member_tv_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:fontFamily="@font/nunitosans_light"
+                android:fontFamily="@font/nunito_sans_light"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="@dimen/member_item_email14"
@@ -55,21 +55,19 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/member_item_iv_selected_member"
-            android:layout_width="@dimen/member_item_iv_size30"
-            android:layout_height="@dimen/member_item_iv_size30"
+            android:id="@+id/member_item_iv_remove_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/member_item_margin_end5"
             android:contentDescription="@null"
-            android:src="@drawable/ic_right_24"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:src="@drawable/ic_delete_24" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_board_divider_height1"
+        android:layout_height="@dimen/item_board_divider_height0_7"
         android:layout_marginTop="@dimen/item_board_divider_marginTop5"
         android:background="@color/divider_color" />
 

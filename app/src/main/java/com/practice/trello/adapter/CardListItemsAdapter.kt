@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.practice.trello.activities.TaskListActivity
 import com.practice.trello.databinding.ItemCardsBinding
 import com.practice.trello.models.Card
+import com.practice.trello.models.SelectedMembers
 
 class CardListItemsAdapter(private val context: Context, private var list: ArrayList<Card>) :
     RecyclerView.Adapter<CardListItemsAdapter.ViewHolder>() {
@@ -30,12 +32,32 @@ class CardListItemsAdapter(private val context: Context, private var list: Array
         with(holder) {
             with(list[position]) {
                 binding.cardItemTvCardName.text = this.name
-                if (this.labelColor.isNotEmpty())
+                if (this.labelColor.isNotEmpty()) {
+                    binding.cardItemViewLabelColor.visibility = View.VISIBLE
                     binding.cardItemViewLabelColor.setBackgroundColor(Color.parseColor(this.labelColor))
-                else {
-                    binding.cardItemViewLabelColor.visibility = View.GONE
                 }
-                holder.itemView.setOnClickListener {
+                if ((context as TaskListActivity).mAssignedMemberList.size > 0) {
+                    val selectedMemberList: ArrayList<SelectedMembers> = ArrayList()
+
+                    for (i in context.mAssignedMemberList.indices) {
+                        for (j in this.assignedTo) {
+                            if (context.mAssignedMemberList[i].id == j) {
+                                val selectedMember =
+                                    SelectedMembers(
+                                        context.mAssignedMemberList[i].id,
+                                        context.mAssignedMemberList[i].image
+                                    )
+                                selectedMemberList.add(selectedMember)
+                            }
+                        }
+                    }
+                    if (selectedMemberList.size > 0) {
+                        binding.cardItemRvSelectedMemberList.adapter =
+                            CardMemberListItemAdapter(context, selectedMemberList, false)
+
+                    }
+                }
+                binding.root.setOnClickListener {
                     if (onItemClickListener != null) {
                         onItemClickListener!!.onClick(position)
                     }

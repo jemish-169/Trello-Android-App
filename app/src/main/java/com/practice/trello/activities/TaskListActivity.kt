@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import com.practice.trello.R
 import com.practice.trello.adapter.TaskListItemAdapter
 import com.practice.trello.databinding.ActivityTaskListBinding
@@ -12,17 +13,15 @@ import com.practice.trello.firebase.FireStoreClass
 import com.practice.trello.models.Board
 import com.practice.trello.models.Card
 import com.practice.trello.models.Task
+import com.practice.trello.models.User
 import com.practice.trello.utils.Constants
+
 
 class TaskListActivity : BaseActivity() {
     lateinit var binding: ActivityTaskListBinding
     private lateinit var mBoardDetails: Board
     private lateinit var mDocumentId: String
-
-    companion object {
-        const val MEMBER_REQUEST_CODE: Int = 13
-        const val CARD_DETAILS_REQUEST_CODE: Int = 14
-    }
+    lateinit var mAssignedMemberList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,30 +47,26 @@ class TaskListActivity : BaseActivity() {
             R.id.action_members -> {
                 val intent = Intent(this, MembersActivity::class.java)
                 intent.putExtra(Constants.BOARS_DETAIL, mBoardDetails)
-                startActivityForResult(intent, MEMBER_REQUEST_CODE)
+                resultLauncher.launch(intent)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && (requestCode == MEMBER_REQUEST_CODE || requestCode == CARD_DETAILS_REQUEST_CODE)) {
-            showProgressDialog(resources.getString(R.string.progress_please_wait))
-            FireStoreClass().getBoardDetails(this, mDocumentId)
+    private var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                showProgressDialog(resources.getString(R.string.progress_please_wait))
+                FireStoreClass().getBoardDetails(this, mDocumentId)
+            }
+
         }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 
     fun boardDetails(board: Board) {
         mBoardDetails = board
-        hideProgressDialog()
         setupActionbar()
 
-        val addTaskList = Task(resources.getString(R.string.item_task_add_List))
-        board.taskList.add(addTaskList)
-        binding.rvTaskList.setHasFixedSize(true)
-        val adapter = TaskListItemAdapter(this, board.taskList)
-        binding.rvTaskList.adapter = adapter
+        FireStoreClass().getAssignedMembersListDetails(this, mBoardDetails.assignedTo)
     }
 
     private fun setupActionbar() {
@@ -136,11 +131,30 @@ class TaskListActivity : BaseActivity() {
         FireStoreClass().addUpdateTaskList(this, mBoardDetails)
     }
 
+    fun boardMembersDetailsList(list: ArrayList<User>) {
+        hideProgressDialog()
+        mAssignedMemberList = list
+
+        val addTaskList = Task(resources.getString(R.string.item_task_add_List))
+        mBoardDetails.taskList.add(addTaskList)
+        binding.rvTaskList.setHasFixedSize(true)
+        val adapter = TaskListItemAdapter(this, mBoardDetails.taskList)
+        binding.rvTaskList.adapter = adapter
+    }
+
     fun cardDetails(taskListPosition: Int, cardListPosition: Int) {
         val intent = Intent(this, CardDetailsActivity::class.java)
         intent.putExtra(Constants.BOARS_DETAIL, mBoardDetails)
         intent.putExtra(Constants.TASK_LIST_ITEM_POSITION, taskListPosition)
+        intent.putExtra(Constants.BOARS_MEMBER_LIST, mAssignedMemberList)
         intent.putExtra(Constants.CARD_LIST_ITEM_POSITION, cardListPosition)
-        startActivityForResult(intent, CARD_DETAILS_REQUEST_CODE)
+        resultLauncher.launch(intent)
+    }
+
+    fun updateCardsInTaskList(taskListPosition: Int, cards: ArrayList<Card>) {
+        mBoardDetails.taskList.removeAt(mBoardDetails.taskList.size - 1)
+        mBoardDetails.taskList[taskListPosition].cards = cards
+        showProgressDialog(resources.getString(R.string.progress_please_wait))
+        FireStoreClass().addUpdateTaskList(this, mBoardDetails)
     }
 }

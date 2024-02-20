@@ -7,6 +7,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.practice.trello.R
 import com.practice.trello.databinding.ActivitySplashBinding
+import com.practice.trello.firebase.FireStoreClass
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -18,11 +19,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
         Handler().postDelayed({
 
-//            val currentUserId = FireStoreClass().getCurrentUserId()
-//            if (currentUserId.isNotBlank())
-//                startActivity(Intent(this, MainActivity::class.java))
-//            else
-            startActivity(Intent(this, IntroActivity::class.java))
+            val currentUserId = FireStoreClass().getCurrentUserId()
+            if (currentUserId.isNotBlank())
+                startActivity(Intent(this, MainActivity::class.java))
+            else
+                startActivity(Intent(this, IntroActivity::class.java))
             finish()
         }, 2500)
     }

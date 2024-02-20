@@ -50,7 +50,7 @@
     <dimen name="card_view_elevation10">10dp</dimen>
     <dimen name="no_boards_available_text_size18">18sp</dimen>
     <dimen name="item_board_content_marginBottom5">5dp</dimen>
-    <dimen name="item_board_divider_height1">1dp</dimen>
+    <dimen name="item_board_divider_height0_7">0.7dp</dimen>
     <dimen name="item_board_divider_marginTop5">5dp</dimen>
     <dimen name="item_board_content_padding10">10dp</dimen>
     <dimen name="item_board_image_size60">60dp</dimen>
@@ -89,7 +89,7 @@
     <dimen name="card_details_lll_padding16">16dp</dimen>
     <dimen name="card_detail_label_text_size14">14sp</dimen>
     <dimen name="card_detail_select_color_padding10">10dp</dimen>
-    <dimen name="card_detail_selext_color_margin_top5">5dp</dimen>
+    <dimen name="card_detail_select_color_margin_top5">5dp</dimen>
     <dimen name="card_detail_member_margin_top15">15dp</dimen>
     <dimen name="card_detail_rv_margin_top5">5dp</dimen>
     <dimen name="card_detail_btn_margin_top30">30dp</dimen>
@@ -101,5 +101,10 @@
     <dimen name="dialog_color_list_tv_padding5">5dp</dimen>
     <dimen name="dialog_color_list_tv_text_size18">18sp</dimen>
     <dimen name="dialog_color_view_margin_vertical3">3dp</dimen>
+    <dimen name="item_card_selected_member_ll_padding5">5dp</dimen>
+    <dimen name="item_card_selected_member_cv_size45">45dp</dimen>
+    <dimen name="item_card_selected_member_cv_border_size1_2">0.5dp</dimen>
+    <dimen name="item_card_selected_member_cv_size20">20dp</dimen>
+    <dimen name="item_card_selected_member_cv_margin_horizontal1">1dp</dimen>
 
 </resources>

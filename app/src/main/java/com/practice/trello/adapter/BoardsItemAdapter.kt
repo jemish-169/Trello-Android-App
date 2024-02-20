@@ -39,8 +39,9 @@ class BoardsItemAdapter(private val context: Context, private val list: ArrayLis
                     .placeholder(R.drawable.employee_manages_project)
                     .into(binding.itemBoardIv)
                 binding.itemBoardTvBoardName.text = this.name
-                binding.itemBoardTvCreatedBy.text = "Created by ${this.createdBy}"
-                holder.itemView.setOnClickListener {
+                binding.itemBoardTvCreatedBy.text =
+                    context.getString(R.string.created_by, this.createdBy)
+                binding.root.setOnClickListener {
                     onItemClickListener?.onClick(position, list[position])
                 }
             }

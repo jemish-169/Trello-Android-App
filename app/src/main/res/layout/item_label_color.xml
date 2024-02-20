@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_label_color_view_height40"
         android:layout_margin="@dimen/item_label_color_view_margin5"
-        android:background="@color/light_yellow"
         android:foreground="?attr/selectableItemBackground" />
 
     <TextView
@@ -19,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_label_color_view_height40"
         android:layout_margin="@dimen/item_label_color_view_margin5"
-        android:fontFamily="@font/nunitosans_semibold"
+        android:fontFamily="@font/nunito_sans_semi_bold"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
         android:text="@string/no_color"
@@ -39,6 +38,4 @@
         app:srcCompat="@drawable/ic_right_24"
         app:tint="#FF101010"
         tools:visibility="visible" />
-
-
 </FrameLayout>

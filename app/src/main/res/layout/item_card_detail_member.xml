@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical">
 
@@ -17,7 +16,7 @@
         android:padding="@dimen/item_board_content_padding10">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/item_board_iv"
+            android:id="@+id/item_card_detail_iv"
             android:layout_width="@dimen/item_board_image_size60"
             android:layout_height="@dimen/item_board_image_size60"
             android:contentDescription="@null"
@@ -26,33 +25,46 @@
             app:civ_border_width="@dimen/item_board_image_circular_border_width1" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_board_name_layout_marginStart10"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item_board_tv_board_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:fontFamily="@font/nunito_sans_semi_bold"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/item_board_name_text_size18"
-                tools:text="Board Name" />
-
-            <TextView
-                android:id="@+id/item_board_tv_created_by"
+                android:id="@+id/item_card_detail_tv_member_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:fontFamily="@font/nunito_sans_regular"
                 android:maxLines="1"
                 android:textColor="@color/black"
-                android:textSize="@dimen/item_board_created_by_text_size14"
-                tools:text="Created By" />
+                android:textSize="@dimen/item_board_name_text_size18"
+                tools:text="Member name" />
+
+            <TextView
+                android:id="@+id/item_card_detail_tv_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_sans_light"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/member_item_email14"
+                tools:text="Email" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_card_detail_iv_selected_member"
+            android:layout_width="@dimen/member_item_iv_size30"
+            android:layout_height="@dimen/member_item_iv_size30"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/member_item_margin_end5"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_right_24"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
     </LinearLayout>
 
     <View

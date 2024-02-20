@@ -62,9 +62,9 @@
                             android:id="@+id/card_detail_et_card_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunitosans_regular"
+                            android:fontFamily="@font/nunito_sans_regular"
                             android:hint="@string/hint_card_name"
-                            android:inputType="text"
+                            android:inputType="textCapWords"
                             android:maxLines="1"
                             android:textColor="@color/black"
                             android:textSize="@dimen/description_text_size16" />
@@ -88,7 +88,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunitosans_regular"
+                        android:fontFamily="@font/nunito_sans_regular"
                         android:text="@string/label_color"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/card_detail_label_text_size14" />
@@ -97,8 +97,8 @@
                         android:id="@+id/card_detail_tv_select_color"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
-                        android:fontFamily="@font/nunitosans_semibold"
+                        android:layout_marginTop="@dimen/card_detail_select_color_margin_top5"
+                        android:fontFamily="@font/nunito_sans_semi_bold"
                         android:foreground="?attr/selectableItemBackground"
                         android:padding="@dimen/card_detail_select_color_padding10"
                         android:text="@string/select_label_color"
@@ -108,36 +108,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_detail_member_margin_top15"
-                        android:fontFamily="@font/nunitosans_regular"
+                        android:fontFamily="@font/nunito_sans_regular"
                         android:text="@string/main_nav_members"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/card_detail_label_text_size14" />
-
-                    <TextView
-                        android:id="@+id/card_detail_tv_select_member"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
-                        android:fontFamily="@font/nunitosans_semibold"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:padding="@dimen/card_detail_select_color_padding10"
-                        android:text="@string/select_member"
-                        android:textColor="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/card_detail_rv_selected_member"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_detail_rv_margin_top5"
-                        android:visibility="gone"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:visibility="gone" />
+                        android:layout_marginTop="@dimen/card_detail_rv_margin_top5" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_detail_member_margin_top15"
-                        android:fontFamily="@font/nunitosans_regular"
+                        android:fontFamily="@font/nunito_sans_regular"
                         android:text="@string/due_date"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/card_detail_label_text_size14" />
@@ -146,8 +132,8 @@
                         android:id="@+id/card_detail_tv_select_due_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/card_detail_selext_color_margin_top5"
-                        android:fontFamily="@font/nunitosans_semibold"
+                        android:layout_marginTop="@dimen/card_detail_select_color_margin_top5"
+                        android:fontFamily="@font/nunito_sans_semi_bold"
                         android:padding="@dimen/card_detail_select_color_padding10"
                         android:text="@string/select_due_date"
                         android:textColor="@color/black" />
@@ -159,7 +145,7 @@
                         android:layout_marginHorizontal="@dimen/text_input_horizontal_margin8"
                         android:layout_marginTop="@dimen/card_detail_btn_margin_top30"
                         android:background="@drawable/horizontal_two_color_gradient"
-                        android:fontFamily="@font/nunitosans_bold"
+                        android:fontFamily="@font/nunito_sans_bold"
                         android:foreground="?attr/selectableItemBackground"
                         android:paddingVertical="@dimen/padding8"
                         android:text="@string/update_btn"

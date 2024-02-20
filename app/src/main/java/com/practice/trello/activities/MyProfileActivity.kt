@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -94,7 +93,6 @@ class MyProfileActivity : BaseActivity() {
             userHashMap[Constants.MOBILE] = 0L
 
         if (userHashMap.isNotEmpty()) {
-            Log.d("TAG", userHashMap.size.toString())
             FireStoreClass().updateUserData(this, userHashMap)
         } else {
             hideProgressDialog()

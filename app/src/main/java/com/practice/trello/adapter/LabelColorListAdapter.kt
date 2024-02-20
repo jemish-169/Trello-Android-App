@@ -15,7 +15,7 @@ class LabelColorListAdapter(
 ) :
     RecyclerView.Adapter<LabelColorListAdapter.ViewHolder>() {
 
-    var onItemClickListener: OnItemClickListener? = null
+    private var onItemClickListener: OnItemClickListener? = null
 
     inner class ViewHolder(val binding: ItemLabelColorBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -32,18 +32,15 @@ class LabelColorListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                if (this == "") {
-                    binding.itemLabelColorView.visibility = View.GONE
+                if (this == "")
                     binding.itemLabelTvNoColor.visibility = View.VISIBLE
-                    if (this == mSelectedColor)
-                        binding.itemLabelColorImageView.visibility = View.VISIBLE
-                } else {
+                else
                     binding.itemLabelColorView.setBackgroundColor(Color.parseColor(this))
-                    if (this == mSelectedColor) {
-                        binding.itemLabelColorImageView.visibility = View.VISIBLE
-                    }
-                }
-                holder.itemView.setOnClickListener {
+
+                if (this == mSelectedColor)
+                    binding.itemLabelColorImageView.visibility = View.VISIBLE
+
+                binding.root.setOnClickListener {
                     if (onItemClickListener != null) {
                         onItemClickListener!!.onClick(position, this)
                     }

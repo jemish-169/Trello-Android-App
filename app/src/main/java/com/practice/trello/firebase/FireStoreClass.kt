@@ -83,15 +83,27 @@ class FireStoreClass {
         return currentUserID
     }
 
-    fun updateUserData(activity: MyProfileActivity, userHashMap: HashMap<String, Any>) {
+    fun updateUserData(activity: Activity, userHashMap: HashMap<String, Any>) {
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserId())
             .update(userHashMap)
             .addOnSuccessListener {
-                activity.profileUpdateSuccess()
+                when (activity) {
+                    is MainActivity ->
+                        activity.tokenUpdateSuccess()
+
+                    is MyProfileActivity ->
+                        activity.profileUpdateSuccess()
+                }
             }
             .addOnFailureListener {
-                activity.hideProgressDialog()
+                when (activity) {
+                    is MainActivity ->
+                        activity.hideProgressDialog()
+
+                    is MyProfileActivity ->
+                        activity.hideProgressDialog()
+                }
                 Toast.makeText(activity, R.string.error_in_profile_update, Toast.LENGTH_SHORT)
                     .show()
             }
@@ -158,7 +170,7 @@ class FireStoreClass {
             }
     }
 
-    fun getAssignedMembersListDetails(activity: MembersActivity, assignedTo: ArrayList<String>) {
+    fun getAssignedMembersListDetails(activity: Activity, assignedTo: ArrayList<String>) {
         mFireStore.collection(Constants.USERS)
             .whereIn(Constants.ID, assignedTo)
             .get()
@@ -168,10 +180,16 @@ class FireStoreClass {
                     val user = i.toObject((User::class.java))!!
                     userList.add(user)
                 }
-                activity.setUpMemberList(userList)
+                if (activity is MembersActivity)
+                    activity.setUpMemberList(userList)
+                else if (activity is TaskListActivity)
+                    activity.boardMembersDetailsList(userList)
             }
             .addOnFailureListener {
-                activity.hideProgressDialog()
+                if (activity is MembersActivity)
+                    activity.hideProgressDialog()
+                else if (activity is TaskListActivity)
+                    activity.hideProgressDialog()
                 Toast.makeText(activity, "Failed to load members", Toast.LENGTH_SHORT).show()
             }
     }
@@ -207,6 +225,28 @@ class FireStoreClass {
             .addOnFailureListener {
                 activity.hideProgressDialog()
                 Toast.makeText(activity, "Failed to updating board details.", Toast.LENGTH_SHORT)
+                    .show()
+
+            }
+    }
+
+    fun removeMemberFromBoard(activity: MembersActivity, board: Board, position: Int, user: User) {
+        val assignedToHashMap = HashMap<String, Any>()
+        board.assignedTo.remove(user.id)
+        assignedToHashMap[Constants.ASSIGNED_TO] = board.assignedTo
+        mFireStore.collection(Constants.BOARDS)
+            .document(board.documentId)
+            .update(assignedToHashMap)
+            .addOnSuccessListener {
+                activity.memberRemovedSuccess(position, user)
+            }
+            .addOnFailureListener {
+                activity.hideProgressDialog()
+                Toast.makeText(
+                    activity,
+                    "Failed to remove member from the board.",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
 
             }
