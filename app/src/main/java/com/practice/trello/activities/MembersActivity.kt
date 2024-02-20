@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.Menu
 import android.view.MenuItem
+import android.window.OnBackInvokedDispatcher
 import androidx.core.widget.doOnTextChanged
 import com.practice.trello.R
 import com.practice.trello.adapter.MemberListItemAdapter
@@ -65,11 +66,11 @@ class MembersActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onBackPressed() {
+    override fun getOnBackInvokedDispatcher(): OnBackInvokedDispatcher {
         if (anyChangesMade) {
             setResult(Activity.RESULT_OK)
         }
-        super.onBackPressed()
+        return super.getOnBackInvokedDispatcher()
     }
 
     fun setUpMemberList(list: ArrayList<User>) {
@@ -103,7 +104,7 @@ class MembersActivity : BaseActivity() {
             if (anyChangesMade) {
                 setResult(Activity.RESULT_OK)
             }
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 
@@ -161,8 +162,9 @@ class MembersActivity : BaseActivity() {
         hideProgressDialog()
         mAssignedMemberList.add(user)
         anyChangesMade = true
-        adapter.notifyDataSetChanged()
-        SendNotificationToUserRemoveAsyncTask(mBoardDetails.name, user.fcmToken).execute()
+        binding.memberRvMembersList.setHasFixedSize(false)
+        adapter.notifyItemInserted(mAssignedMemberList.size - 1)
+        SendNotificationToUserAsyncTask(mBoardDetails.name, user.fcmToken).execute()
     }
 
     fun memberRemovedSuccess(position: Int, user: User) {
@@ -171,7 +173,7 @@ class MembersActivity : BaseActivity() {
         mAssignedMemberList.remove(user)
         anyChangesMade = true
         adapter.notifyItemRemoved(position)
-        SendNotificationToUserAsyncTask(mBoardDetails.name, user.fcmToken).execute()
+        SendNotificationToUserRemoveAsyncTask(mBoardDetails.name, user.fcmToken).execute()
     }
 
     private inner class SendNotificationToUserAsyncTask(val boardName: String, val token: String) :
@@ -281,7 +283,7 @@ class MembersActivity : BaseActivity() {
                 dataObject.put(Constants.FCM_KEY_TITLE, "Removed from The board $boardName")
                 dataObject.put(
                     Constants.FCM_KEY_MESSAGE,
-                    "You have been removed from the $boardName board}"
+                    "You have been removed from the $boardName board by ${mAssignedMemberList[0].name}"
                 )
                 jsonRequest.put(Constants.FCM_KEY_DATA, dataObject)
                 jsonRequest.put(Constants.FCM_KEY_TO, token)

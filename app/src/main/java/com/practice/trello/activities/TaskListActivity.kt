@@ -56,7 +56,7 @@ class TaskListActivity : BaseActivity() {
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                showProgressDialog(resources.getString(R.string.progress_please_wait))
+                setResult(Activity.RESULT_OK)
                 FireStoreClass().getBoardDetails(this, mDocumentId)
             }
 
