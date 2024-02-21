@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_members"
-        android:orderInCategory="100"
+        android:icon="@drawable/ic_stat_ic_notification"
         android:title="@string/main_nav_members"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
 </menu>

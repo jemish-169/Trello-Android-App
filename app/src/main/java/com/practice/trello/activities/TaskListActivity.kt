@@ -79,7 +79,7 @@ class TaskListActivity : BaseActivity() {
     }
 
     fun addUpdateTaskListSuccess() {
-        FireStoreClass().getBoardDetails(this, mBoardDetails.documentId)
+        FireStoreClass().getBoardDetails(this, mDocumentId)
     }
 
     fun createTaskList(taskListName: String) {
