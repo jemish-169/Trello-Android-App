@@ -37,7 +37,7 @@ object Constants {
     const val FCM_AUTHORIZATION: String = "authorization"
     const val FCM_KEY: String = "key"
     const val FCM_SERVER_KEY: String =
-        "AAAARnsBL_0:APA91bH2jjLSHBeqOFkT0matxGKbdc6ygr34i9N6Yvwq1ccj0PIBUOE2_nVIEcVmV6GJmXcZ92ZLc9qA4V3Ke1M4b6ARRSs04U8gpdznDQFEo_2ZqEnrVXfx6ADk9_8A_8ab8hPSbHyT"
+        "AAAARnsBL_0:APA91bH2jjLSHBeqOFkT0matxGKKUYIbdc6ygr34i9N6Yvwq1ccj0PIBUOE2_nVIEcVmV6GJmXcZ92ZLc9qA4V3Ke1M4b6ARRSs04U8gpdznDQFEo_2ZqEnrVXfx6ADk9_8A_8ab8hPSbHyT"
     const val FCM_KEY_TITLE: String = "title"
     const val FCM_KEY_MESSAGE: String = "message"
     const val FCM_KEY_DATA: String = "data"
