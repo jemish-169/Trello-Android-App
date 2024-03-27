@@ -32,12 +32,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        sendRegistrationToServer(token)
+        sendRegistrationToServer()
 
 
     }
 
-    private fun sendRegistrationToServer(token: String?) {
+    private fun sendRegistrationToServer() {
 
     }
 
@@ -54,7 +54,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
         )
         val channelId = this.resources.getString(R.string.default_notification_channel_id)
-        val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+        RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(
             this,
             channelId

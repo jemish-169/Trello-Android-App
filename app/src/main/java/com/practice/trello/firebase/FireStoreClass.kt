@@ -68,7 +68,7 @@ class FireStoreClass {
             }
             .addOnFailureListener {
                 activity.hideProgressDialog()
-                Toast.makeText(activity, "Some error occured.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, "Some error occurred.", Toast.LENGTH_SHORT).show()
 
             }
 

@@ -13,7 +13,6 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessaging
@@ -48,11 +47,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             FireStoreClass().loadUserData(this, true)
         } else {
             FirebaseMessaging.getInstance().token
-                .addOnCompleteListener(OnCompleteListener { task ->
+                .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         updateFCMToken(task.result)
                     }
-                })
+                }
         }
 
 
@@ -77,11 +76,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     FireStoreClass().loadUserData(this, true)
                 } else {
                     FirebaseMessaging.getInstance().token
-                        .addOnCompleteListener(OnCompleteListener { task ->
+                        .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 updateFCMToken(task.result)
                             }
-                        })
+                        }
                 }
             }
         }
